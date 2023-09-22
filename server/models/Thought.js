@@ -1,10 +1,33 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, mongoose } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
+
+// Sub-document schema for reaction
+
+const commentSchema = new Schema({
+  commentId: {
+    type: mongoose.Types.ObjectId,
+    default: new mongoose.Types.ObjectId(),
+  },
+  commentBody: {
+    type: String,
+    required: true,
+    maxLength: 280,
+  },
+  username: {
+    type: String,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
+  },
+});
 
 const thoughtSchema = new Schema({
   thoughtText: {
     type: String,
-    required: 'You need to leave a thought!',
+    required: 'You need to leave a whisper!',
     minlength: 1,
     maxlength: 280,
     trim: true,
@@ -19,25 +42,7 @@ const thoughtSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
-  comments: [
-    {
-      commentText: {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 280,
-      },
-      commentAuthor: {
-        type: String,
-        required: true,
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
-      },
-    },
-  ],
+  comments: [commentSchema],
 });
 
 const Thought = model('Thought', thoughtSchema);
