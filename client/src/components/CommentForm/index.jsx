@@ -42,7 +42,7 @@ const CommentForm = ({ thoughtId }) => {
 
   return (
     <div>
-      <h4>What are your thoughts on this thought?</h4>
+      <h4>What are your comments on this whispr?</h4>
 
       {Auth.loggedIn() ? (
         <>
