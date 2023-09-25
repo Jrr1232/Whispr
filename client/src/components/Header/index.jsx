@@ -12,7 +12,7 @@ const Header = () => {
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
           <Link className="text-light" to="/">
-            <img src=''/>
+            <img id='home-img' src='whispr.png'/>
           </Link>
           <p className="m-0">some things don't need to be said loud.</p>
         </div>
