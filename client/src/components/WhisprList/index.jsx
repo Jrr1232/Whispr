@@ -18,6 +18,7 @@ const WhisprList = ({
           <div key={whispr._id} className="card mb-3">
             <h4 className="card-header bg-primary text-light p-2 m-0">
               {showUsername ? (
+                <>
                   <Link
                     className="text-light"
                     to={`/profiles/${whispr.whisprAuthor}`}
@@ -27,6 +28,14 @@ const WhisprList = ({
                       whispred on {whispr.createdAt}
                     </span>
                   </Link>
+                  <span style={{float: 'right'}}>
+                    <Link to={whispr.category}>
+                      <button className='btn btn-link'>
+                        {whispr.category ? whispr.category : '-'}
+                      </button>
+                    </Link>
+                  </span>
+                </>
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
