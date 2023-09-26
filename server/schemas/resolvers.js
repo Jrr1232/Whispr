@@ -1,24 +1,24 @@
-const { User, Thought } = require('../models');
+const { User, Whispr } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('thoughts');
+      return User.find().populate('whisprs');
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('thoughts');
+      return User.findOne({ username }).populate('whisprs');
     },
-    thoughts: async (parent, { username }) => {
+    whisprs: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Thought.find(params).sort({ createdAt: -1 });
+      return Whispr.find(params).sort({ createdAt: -1 });
     },
-    thought: async (parent, { thoughtId }) => {
-      return Thought.findOne({ _id: thoughtId });
+    whispr: async (parent, { whisprId }) => {
+      return Whispr.findOne({ _id: whisprId });
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('thoughts');
+        return User.findOne({ _id: context.user._id }).populate('whisprs');
       }
       throw AuthenticationError;
     },
@@ -47,26 +47,26 @@ const resolvers = {
 
       return { token, user };
     },
-    addThought: async (parent, { thoughtText }, context) => {
+    addWhispr: async (parent, { whisprText }, context) => {
       if (context.user) {
-        const thought = await Thought.create({
-          thoughtText,
-          thoughtAuthor: context.user.username,
+        const whispr = await Whispr.create({
+          whisprText,
+          whisprAuthor: context.user.username,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { thoughts: thought._id } }
+          { $addToSet: { whisprs: whispr._id } }
         );
 
-        return thought;
+        return whispr;
       }
       throw AuthenticationError;
     },
-    addComment: async (parent, { thoughtId, commentText }, context) => {
+    addComment: async (parent, { whisprId, commentText }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
+        return Whispr.findOneAndUpdate(
+          { _id: whisprId },
           {
             $addToSet: {
               comments: { commentText, commentAuthor: context.user.username },
@@ -80,26 +80,26 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    removeThought: async (parent, { thoughtId }, context) => {
+    removeWhispr: async (parent, { whisprId }, context) => {
       if (context.user) {
-        const thought = await Thought.findOneAndDelete({
-          _id: thoughtId,
-          thoughtAuthor: context.user.username,
+        const whispr = await Whispr.findOneAndDelete({
+          _id: whisprId,
+          whisprAuthor: context.user.username,
         });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { thoughts: thought._id } }
+          { $pull: { whisprs: whispr._id } }
         );
 
-        return thought;
+        return whispr;
       }
       throw AuthenticationError;
     },
-    removeComment: async (parent, { thoughtId, commentId }, context) => {
+    removeComment: async (parent, { whisprId, commentId }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
-          { _id: thoughtId },
+        return Whispr.findOneAndUpdate(
+          { _id: whisprId },
           {
             $pull: {
               comments: {

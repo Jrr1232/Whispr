@@ -5,18 +5,18 @@ import { useQuery } from '@apollo/client';
 import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
 
-import { QUERY_SINGLE_THOUGHT } from '../utils/queries';
+import { QUERY_SINGLE_WHISPR } from '../utils/queries';
 
-const SingleThought = () => {
+const SingleWhispr = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
-  const { thoughtId } = useParams();
+  const { whisprId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_SINGLE_THOUGHT, {
+  const { loading, data } = useQuery(QUERY_SINGLE_WHISPR, {
     // pass URL parameter
-    variables: { thoughtId: thoughtId },
+    variables: { whisprId: whisprId },
   });
 
-  const thought = data?.thought || {};
+  const whispr = data?.whispr || {};
 
   if (loading) {
     return <div>Loading...</div>;
@@ -24,9 +24,9 @@ const SingleThought = () => {
   return (
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
-        {thought.thoughtAuthor} <br />
+        {whispr.whisprAuthor} <br />
         <span style={{ fontSize: '1rem' }}>
-          had this thought on {thought.createdAt}
+          whispred on {whispr.createdAt}
         </span>
       </h3>
       <div className="bg-light py-4">
@@ -39,18 +39,18 @@ const SingleThought = () => {
             lineHeight: '1.5',
           }}
         >
-          {thought.thoughtText}
+          {whispr.whisprText}
         </blockquote>
       </div>
 
       <div className="my-5">
-        <CommentList comments={thought.comments} />
+        <CommentList comments={whispr.comments} />
       </div>
       <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <CommentForm thoughtId={thought._id} />
+        <CommentForm whisprId={whispr._id} />
       </div>
     </div>
   );
 };
 
-export default SingleThought;
+export default SingleWhispr;
