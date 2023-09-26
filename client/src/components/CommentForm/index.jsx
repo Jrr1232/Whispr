@@ -9,6 +9,7 @@ import Auth from '../../utils/auth';
 const CommentForm = ({ thoughtId }) => {
   const [commentText, setCommentText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
+  const [selectedPostType, setSelectedPostType] = useState('Text'); // default post
 
   const [addComment, { error }] = useMutation(ADD_COMMENT);
 
