@@ -41,6 +41,20 @@ const WhisprList = ({
                   <span style={{ fontSize: '1rem' }}>
                     You whispred on {whispr.createdAt}
                   </span>
+                  <span className='ml-1'>
+                    <Link>
+                      <button className='btn btn-link'>
+                        {whispr.category ? whispr.category : '-'}
+                      </button>
+                    </Link>
+                  </span>
+                  <span style={{float: 'right'}}>
+                    <Link>
+                      <button className='btn btn-info'>
+                        Edit
+                      </button>
+                    </Link>
+                  </span>
                 </>
               )}
             </h4>
