@@ -40,7 +40,7 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addThought(thoughtText: String!): Thought
     addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
+    removeThought(thoughtId: ID!): User
     removeComment(thoughtId: ID!, commentId: ID!): Thought
   }
 `;

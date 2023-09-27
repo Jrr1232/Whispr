@@ -84,15 +84,14 @@ const resolvers = {
       if (context.user) {
         const thought = await Thought.findOneAndDelete({
           _id: thoughtId,
-          thoughtAuthor: context.user.username,
         });
 
-        await User.findOneAndUpdate(
+        const User = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { thoughts: thought._id } }
+          { $pull: { thoughts: thoughtId } }
         );
 
-        return thought;
+        return User;
       }
       throw AuthenticationError;
     },

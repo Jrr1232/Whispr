@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom';
+import React from 'react';
+import { useMutation } from '@apollo/client';
+import { DELETE_THOUGHT } from '../../utils/mutations';
 
 const ThoughtList = ({
   thoughts,
@@ -6,9 +9,28 @@ const ThoughtList = ({
   showTitle = true,
   showUsername = true,
 }) => {
+
+  const [deleteThought] = useMutation(DELETE_THOUGHT);
+
+  const handleDeleteThought = async (thoughtId) => {
+    try {
+      console.log(thoughtId)
+      const { data } = await deleteThought({
+        variables: {
+          thoughtId
+        },
+      });
+
+      console.log(data); 
+    } catch (error) {
+      console.error(error);
+    }
+  };
   if (!thoughts.length) {
     return <h3>No Thoughts Yet</h3>;
   }
+
+  
 
   return (
     <div>
@@ -25,6 +47,7 @@ const ThoughtList = ({
                   {thought.thoughtAuthor} <br />
                   <span style={{ fontSize: '1rem' }}>
                     had this thought on {thought.createdAt}
+                    
                   </span>
                 </Link>
               ) : (
@@ -38,6 +61,12 @@ const ThoughtList = ({
             <div className="card-body bg-light p-2">
               <p>{thought.thoughtText}</p>
             </div>
+            <button
+                className="delete-button"
+                onClick={() => handleDeleteThought(thought._id)}
+              >
+                Delete
+              </button>
             <Link
               className="btn btn-primary btn-block btn-squared"
               to={`/thoughts/${thought._id}`}
