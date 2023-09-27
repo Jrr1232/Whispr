@@ -32,6 +32,9 @@ const thoughtSchema = new Schema({
     maxlength: 280,
     trim: true,
   },
+  thoughtType: {  // New field
+    type: String,
+  },
   thoughtAuthor: {
     type: String,
     required: true,

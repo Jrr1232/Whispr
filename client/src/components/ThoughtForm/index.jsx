@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client'
 import { ADD_THOUGHT } from '../../utils/mutations';
 import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 const ThoughtForm = () => {
-  const [thoughtText, setThoughtText] = useState('');
+  // const [thoughtText, setThoughtText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
-  const [selectedThoughtType, setSelectedThoughtType] = useState('Text'); // Default thought type
+  // const [selectedThoughtType, setSelectedThoughtType] = useState('Text'); // Default thought type
+  const [formData, setFormData] = useState({ thoughtText: '', thoughtType: 'Uncategorized' });
 
   const [addThought, { error }] = useMutation(ADD_THOUGHT, {
     refetchQueries: [
@@ -18,21 +19,21 @@ const ThoughtForm = () => {
     ],
   });
 
-  const thoughtTypes = ['👽', '☕️', '👾', '😼']; // type of thoughts
+  const thoughtTypes = ['Uncategorized', 'First World Problems 👽', 'Tea ☕️', 'Gamers 👾', 'Fur Friends 😼']; // type of thoughts
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(formData);
     try {
       const { data } = await addThought({
         variables: {
-          thoughtText,
-          thoughtType: selectedThoughtType, //selected thought type 
-          // Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's username 
-          thoughtAuthor: Auth.getProfile().authenticatedPerson.username
+          thoughtText: formData.thoughtText,
+          thoughtType: formData.thoughtType, // Use selectedThoughtType here
+          // thoughtAuthor: Auth.getProfile().authenticatedPerson.username,
         },
       });
 
-      setThoughtText('');
+      setFormData({ thoughtText: '', thoughtType: 'Uncategorized' });
     } catch (err) {
       console.error(err);
     }
@@ -40,11 +41,12 @@ const ThoughtForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    if (name === 'thoughtText' && value.length <= 280) {
-      setThoughtText(value);
-      setCharacterCount(value.length);
-    }
+    setFormData({ ...formData, [name]: value });
+    console.log(formData.thoughtType);
+    // if (name === 'thoughtText' && value.length <= 280) {
+    //   setThoughtText(value);
+    //   setCharacterCount(value.length);
+    // }
   };
 
   return (
@@ -67,7 +69,7 @@ const ThoughtForm = () => {
               <textarea
                 name="thoughtText"
                 placeholder="Here's a new thought..."
-                value={thoughtText}
+                value={formData.thoughtText}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
@@ -78,9 +80,9 @@ const ThoughtForm = () => {
               <select
                 id="thoughtType"
                 name="thoughtType"
-                value={selectedThoughtType}
+                value={formData.thoughtType}
                 className="form-select"
-                onChange={(e) => setSelectedThoughtType(e.target.value)}
+                onChange={handleChange}
               >
                 {thoughtTypes.map((type) => (
                   <option key={type} value={type}>

@@ -47,22 +47,24 @@ const resolvers = {
 
       return { token, user };
     },
-    addThought: async (parent, { thoughtText }, context) => {
+    addThought: async (parent, { thoughtText, thoughtType }, context) => {
       if (context.user) {
         const thought = await Thought.create({
           thoughtText,
+          thoughtType, // Add thoughtType here
           thoughtAuthor: context.user.username,
         });
-
+    
         await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { thoughts: thought._id } }
         );
-
+    
         return thought;
       }
       throw AuthenticationError;
     },
+    
     addComment: async (parent, { thoughtId, commentText }, context) => {
       if (context.user) {
         return Thought.findOneAndUpdate(
