@@ -1,22 +1,23 @@
 const typeDefs = `
   type User {
-    _id: ID
+    _id: ID!
     username: String
     email: String
     password: String
     whisprs: [Whispr]!
   }
 
-  type Whispr {
-    _id: ID
-    whisprText: String
-    whisprAuthor: String
+  type Thought {
+    _id: ID!
+    thoughtText: String
+    thoughtType: String 
+    thoughtAuthor: String
     createdAt: String
     comments: [Comment]!
   }
 
   type Comment {
-    _id: ID
+    _id: ID!
     commentText: String
     commentAuthor: String
     createdAt: String
@@ -30,18 +31,18 @@ const typeDefs = `
   type Query {
     users: [User]
     user(username: String!): User
-    whisprs(username: String): [Whispr]
-    whispr(whisprId: ID!): Whispr
+    thoughts(username: String, thoughtType: String): [Thought]
+    thought(thoughtId: ID!): Thought
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addWhispr(whisprText: String!): Whispr
-    addComment(whisprId: ID!, commentText: String!): Whispr
-    removeWhispr(whisprId: ID!): Whispr
-    removeComment(whisprId: ID!, commentId: ID!): Whispr
+    addThought(thoughtText: String!, thoughtType: String): Thought 
+    addComment(thoughtId: ID!, commentText: String!): Thought
+    removeThought(thoughtId: ID!): Thought
+    removeComment(thoughtId: ID!, commentId: ID!): Thought
   }
 `;
 

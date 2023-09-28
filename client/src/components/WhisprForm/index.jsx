@@ -1,39 +1,39 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { ADD_WHISPR } from '../../utils/mutations';
-import { QUERY_WHISPRS, QUERY_ME } from '../../utils/queries';
-
+import { Form, Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client'
+import { ADD_THOUGHT } from '../../utils/mutations';
+import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
-const WhisprForm = () => {
-  const [whisprText, setWhisprText] = useState('');
-
+const ThoughtForm = () => {
+  // const [thoughtText, setThoughtText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
+  // const [selectedThoughtType, setSelectedThoughtType] = useState('Text'); // Default thought type
+  const [formData, setFormData] = useState({ thoughtText: '', thoughtType: 'Uncategorized' });
 
-  const [addWhispr, { error }] = useMutation
-  (ADD_WHISPR, {
+  const [addThought, { error }] = useMutation(ADD_THOUGHT, {
     refetchQueries: [
-      QUERY_WHISPRS,
-      'getWhisprs',
-      QUERY_ME,
-      'me'
-    ]
+      QUERY_THOUGHTS,
+      { query: QUERY_THOUGHTS },
+      { query: QUERY_ME },
+    ],
   });
+
+  const thoughtTypes = ['Uncategorized', 'First World Problems 👽', 'Tea ☕️', 'Gamers 👾', 'Fur Friends 😼']; // type of thoughts
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(formData);
     try {
       const { data } = await addWhispr({
         variables: {
-          whisprText,
-          // Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's username 
-          whisprAuthor: Auth.getProfile().authenticatedPerson.username
+          thoughtText: formData.thoughtText,
+          thoughtType: formData.thoughtType, // Use selectedThoughtType here
+          // thoughtAuthor: Auth.getProfile().authenticatedPerson.username,
         },
       });
 
-      setWhisprText('');
+      setFormData({ thoughtText: '', thoughtType: 'Uncategorized' });
     } catch (err) {
       console.error(err);
     }
@@ -41,11 +41,12 @@ const WhisprForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    if (name === 'whisprText' && value.length <= 280) {
-      setWhisprText(value);
-      setCharacterCount(value.length);
-    }
+    setFormData({ ...formData, [name]: value });
+    console.log(formData.thoughtType);
+    // if (name === 'thoughtText' && value.length <= 280) {
+    //   setThoughtText(value);
+    //   setCharacterCount(value.length);
+    // }
   };
 
   return (
@@ -55,9 +56,8 @@ const WhisprForm = () => {
       {Auth.loggedIn() ? (
         <>
           <p
-            className={`m-0 ${
-              characterCount === 280 || error ? 'text-danger' : ''
-            }`}
+            className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
+              }`}
           >
             Character Count: {characterCount}/280
           </p>
@@ -67,13 +67,29 @@ const WhisprForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="whisprText"
-                placeholder="time to whispr..."
-                value={whisprText}
+                name="thoughtText"
+                placeholder="Here's a new thought..."
+                value={formData.thoughtText}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
+            </div>
+            <div className="col-12 col-lg-3">
+              <label htmlFor="thoughtType">Select Thought Type:</label>
+              <select
+                id="thoughtType"
+                name="thoughtType"
+                value={formData.thoughtType}
+                className="form-select"
+                onChange={handleChange}
+              >
+                {thoughtTypes.map((type) => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="col-12 col-lg-3">

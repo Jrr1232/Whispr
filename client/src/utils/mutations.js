@@ -25,10 +25,11 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_WHISPR = gql`
-  mutation addWhispr($whisprText: String!) {
-    addWhispr(whisprText: $whisprText) {
+  mutation addWhispr($whisprText: String!, $whisprType: String!) {
+    addWhispr(whisprText: $whisprText, whisprType: $whisprType) {
       _id
       whisprText
+      whisprType
       whisprAuthor
       createdAt
       comments {

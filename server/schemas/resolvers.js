@@ -47,23 +47,25 @@ const resolvers = {
 
       return { token, user };
     },
-    addWhispr: async (parent, { whisprText }, context) => {
+    addThought: async (parent, { thoughtText, thoughtType }, context) => {
       if (context.user) {
-        const whispr = await Whispr.create({
-          whisprText,
-          whisprAuthor: context.user.username,
+        const thought = await Thought.create({
+          thoughtText,
+          thoughtType, // Add thoughtType here
+          thoughtAuthor: context.user.username,
         });
-
+    
         await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { whisprs: whispr._id } }
         );
-
-        return whispr;
+    
+        return thought;
       }
       throw AuthenticationError;
     },
-    addComment: async (parent, { whisprId, commentText }, context) => {
+    
+    addComment: async (parent, { thoughtId, commentText }, context) => {
       if (context.user) {
         return Whispr.findOneAndUpdate(
           { _id: whisprId },
