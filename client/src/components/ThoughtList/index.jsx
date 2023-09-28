@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { DELETE_THOUGHT } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 const ThoughtList = ({
   thoughts,
@@ -9,28 +10,39 @@ const ThoughtList = ({
   showTitle = true,
   showUsername = true,
 }) => {
+  let loggedInUser; 
+
+  if (Auth.loggedIn()) {
+    loggedInUser = Auth.getProfile().authenticatedPerson.username; 
+    if (loggedInUser) {
+      console.log(loggedInUser);
+    } else {
+      console.log("no user loggedIn");
+    }
+  }
 
   const [deleteThought] = useMutation(DELETE_THOUGHT);
 
   const handleDeleteThought = async (thoughtId) => {
     try {
-      console.log(thoughtId)
+      console.log(thoughtId);
       const { data } = await deleteThought({
         variables: {
-          thoughtId
+          thoughtId,
         },
       });
+      window.location.reload()
 
-      console.log(data); 
+      console.log(data);
     } catch (error) {
       console.error(error);
     }
   };
+
   if (!thoughts.length) {
     return <h3>No Thoughts Yet</h3>;
   }
 
-  
 
   return (
     <div>
@@ -61,12 +73,15 @@ const ThoughtList = ({
             <div className="card-body bg-light p-2">
               <p>{thought.thoughtText}</p>
             </div>
-            <button
+            
+            {loggedInUser === thought.thoughtAuthor && (
+              <button
                 className="delete-button"
                 onClick={() => handleDeleteThought(thought._id)}
               >
                 Delete
               </button>
+            )}
             <Link
               className="btn btn-primary btn-block btn-squared"
               to={`/thoughts/${thought._id}`}

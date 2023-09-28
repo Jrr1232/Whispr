@@ -86,29 +86,33 @@ const resolvers = {
           _id: thoughtId,
         });
 
-        const User = await User.findOneAndUpdate(
+        const updateUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { thoughts: thoughtId } }
+          { $pull: { thoughts: thoughtId } },
+          { new: true }
         );
 
-        return User;
+        return updateUser;
       }
       throw AuthenticationError;
     },
+
     removeComment: async (parent, { thoughtId, commentId }, context) => {
       if (context.user) {
-        return Thought.findOneAndUpdate(
+        const updatedThought = Thought.findOneAndUpdate(
           { _id: thoughtId },
           {
             $pull: {
               comments: {
                 _id: commentId,
-                commentAuthor: context.user.username,
+                commentAuthor: context.user.username
               },
             },
           },
           { new: true }
         );
+        return updatedThought;
+
       }
       throw AuthenticationError;
     },

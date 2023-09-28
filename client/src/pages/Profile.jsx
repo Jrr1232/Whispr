@@ -50,6 +50,7 @@ const Profile = () => {
             title={`${user.username}'s thoughts...`}
             showTitle={false}
             showUsername={false}
+            
           />
         </div>
         {!userParam && (

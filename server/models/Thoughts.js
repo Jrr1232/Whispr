@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const thoughtSchema = new Schema({
-  thoughtSchema: {
+  thoughtText: {
     type: String,
     required: 'You need to leave a whispr!',
     minlength: 1,

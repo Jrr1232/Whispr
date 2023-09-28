@@ -2,21 +2,25 @@ import React from 'react';
 import { useMutation } from '@apollo/client';
 import { DELETE_COMMENT } from '../../utils/mutations';
 
-const CommentList = ({ comments = [] }) => {
+const CommentList = ({ comments = [], thoughtId  }) => {
     const [deleteComment] = useMutation(DELETE_COMMENT);
   
-    const handleDelete = async (commentId) => {
-      try {
-        console.log(commentId)
+    const handleDeleteComment = async (commentId) => {
+      console.log(commentId)
+      console.log(thoughtId)
+    try {
         await deleteComment({
           variables: {
-            commentId: commentId,
+            thoughtId,
+            commentId
           },
         });
+
   
       } catch (error) {
         console.error(error);
       }
+
     }; 
   
   
@@ -46,7 +50,7 @@ const CommentList = ({ comments = [] }) => {
                 <p className="card-body">{comment.commentText}</p>
                 <button
                 className="delete-button"
-                onClick={() => handleDelete(comment._id)}
+                onClick={() => handleDeleteComment(comment._id)}
               >
                 Delete
               </button>

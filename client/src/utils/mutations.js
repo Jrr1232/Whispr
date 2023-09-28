@@ -57,10 +57,19 @@ export const ADD_COMMENT = gql`
 
 
 export const DELETE_COMMENT = gql`
-mutation removeComment($thoughtId: ID!,$commentId: ID!) {
-  removeComment(thoughtId: $thoughtId, commentId: $commentId) 
+mutation removeComment($thoughtId: ID!, $commentId: ID!) {
+  removeComment(thoughtId: $thoughtId, commentId: $commentId){
+   _id
+      thoughtText
+      thoughtAuthor
+      createdAt
+        comments {
+        _id
+        commentText
+        createdAt
+  }
 }
-
+}
 `;
 
 export const DELETE_THOUGHT = gql`
