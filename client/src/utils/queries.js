@@ -6,32 +6,32 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      thoughts {
+      whisprs {
         _id
-        thoughtText
+        whisprText
         createdAt
       }
     }
   }
 `;
 
-export const QUERY_THOUGHTS = gql`
-  query getThoughts {
-    thoughts {
+export const QUERY_WHISPRS = gql`
+  query getWhisprs {
+    whisprs {
       _id
-      thoughtText
-      thoughtAuthor
+      whisprText
+      whisprAuthor
       createdAt
     }
   }
 `;
 
-export const QUERY_SINGLE_THOUGHT = gql`
-  query getSingleThought($thoughtId: ID!) {
-    thought(thoughtId: $thoughtId) {
+export const QUERY_SINGLE_WHISPR = gql`
+  query getSingleWhispr($whisprId: ID!) {
+    whispr(whisprId: $whisprId) {
       _id
-      thoughtText
-      thoughtAuthor
+      whisprText
+      whisprAuthor
       createdAt
       comments {
         _id
@@ -49,10 +49,10 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      thoughts {
+      whisprs {
         _id
-        thoughtText
-        thoughtAuthor
+        whisprText
+        whisprAuthor
         createdAt
       }
     }

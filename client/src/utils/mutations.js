@@ -24,13 +24,13 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!, $thoughtType: String!) {
-    addThought(thoughtText: $thoughtText, thoughtType: $thoughtType) {
+export const ADD_WHISPR = gql`
+  mutation addWhispr($whisprText: String!, $whisprType: String!) {
+    addWhispr(whisprText: $whisprText, whisprType: $whisprType) {
       _id
-      thoughtText
-      thoughtType
-      thoughtAuthor
+      whisprText
+      whisprType
+      whisprAuthor
       createdAt
       comments {
         _id
@@ -41,11 +41,11 @@ export const ADD_THOUGHT = gql`
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
+  mutation addComment($whisprId: ID!, $commentText: String!) {
+    addComment(whisprId: $whisprId, commentText: $commentText) {
       _id
-      thoughtText
-      thoughtAuthor
+      whisprText
+      whisprAuthor
       createdAt
       comments {
         _id
