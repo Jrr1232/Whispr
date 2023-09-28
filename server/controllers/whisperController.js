@@ -3,13 +3,13 @@ module.exports = {
     async addComment(req, res) {
         try {
             comment = req.body
-            const thought = await Thought.findOneAndUpdate(
-                { _id: req.params.thoughtId },
+            const whispr = await Whispr.findOneAndUpdate(
+                { _id: req.params.whisprId },
                 { $push: { comments: comment } },
                 { new: true }
             );
 
-            if (!thought) {
+            if (!whispr) {
                 return res
                     .status(404)
                     .json({ message: 'No whisper found with that id' });
@@ -24,18 +24,18 @@ module.exports = {
     async deleteReaction(req, res) {
         try {
             const reactionId = req.params.reactionId;
-            const thoughtId = req.params.thoughtId;
-            console.log(reactionId, thoughtId)
-            await Thought.findByIdAndUpdate(
-                { _id: thoughtId },
+            const whisprId = req.params.whisprId;
+            console.log(reactionId, whisprId)
+            await Whispr.findByIdAndUpdate(
+                { _id: whisprId },
                 { $pull: { reactions: { reactionId } } },
                 { new: true }
             );
 
-            if (!thoughtId) {
+            if (!whisprId) {
                 return res
                     .status(404)
-                    .json({ message: 'No thought found with that id' });
+                    .json({ message: 'No whispr found with that id' });
             }
 
             res.json('Deleted the reaction 🎉');

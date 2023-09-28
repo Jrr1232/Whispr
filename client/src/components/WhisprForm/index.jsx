@@ -1,25 +1,25 @@
 import { useState } from 'react';
 import { Form, Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client'
-import { ADD_THOUGHT } from '../../utils/mutations';
-import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
+import { ADD_WHISPR } from '../../utils/mutations';
+import { QUERY_WHISPRS, QUERY_ME } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
-const ThoughtForm = () => {
-  // const [thoughtText, setThoughtText] = useState('');
+const WhisprForm = () => {
+  // const [whisprText, setWhisprText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
-  // const [selectedThoughtType, setSelectedThoughtType] = useState('Text'); // Default thought type
-  const [formData, setFormData] = useState({ thoughtText: '', thoughtType: 'Uncategorized' });
+  // const [selectedWhisprType, setSelectedWhisprType] = useState('Text'); // Default whispr type
+  const [formData, setFormData] = useState({ whisprText: '', whisprType: 'Uncategorized' });
 
-  const [addThought, { error }] = useMutation(ADD_THOUGHT, {
+  const [addWhispr, { error }] = useMutation(ADD_WHISPR, {
     refetchQueries: [
-      QUERY_THOUGHTS,
-      { query: QUERY_THOUGHTS },
+      QUERY_WHISPRS,
+      { query: QUERY_WHISPRS },
       { query: QUERY_ME },
     ],
   });
 
-  const thoughtTypes = ['Uncategorized', 'First World Problems 👽', 'Tea ☕️', 'Gamers 👾', 'Fur Friends 😼']; // type of thoughts
+  const whisprTypes = ['Uncategorized', 'First World Problems 👽', 'Tea ☕️', 'Gamers 👾', 'Fur Friends 😼']; // type of whisprs
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -27,13 +27,13 @@ const ThoughtForm = () => {
     try {
       const { data } = await addWhispr({
         variables: {
-          thoughtText: formData.thoughtText,
-          thoughtType: formData.thoughtType, // Use selectedThoughtType here
-          // thoughtAuthor: Auth.getProfile().authenticatedPerson.username,
+          whisprText: formData.whisprText,
+          whisprType: formData.whisprType, // Use selectedWhisprType here
+          // whisprAuthor: Auth.getProfile().authenticatedPerson.username,
         },
       });
 
-      setFormData({ thoughtText: '', thoughtType: 'Uncategorized' });
+      setFormData({ whisprText: '', whisprType: 'Uncategorized' });
     } catch (err) {
       console.error(err);
     }
@@ -42,9 +42,9 @@ const ThoughtForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-    console.log(formData.thoughtType);
-    // if (name === 'thoughtText' && value.length <= 280) {
-    //   setThoughtText(value);
+    console.log(formData.whisprType);
+    // if (name === 'whisprText' && value.length <= 280) {
+    //   setWhisprText(value);
     //   setCharacterCount(value.length);
     // }
   };
@@ -67,24 +67,24 @@ const ThoughtForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="thoughtText"
-                placeholder="Here's a new thought..."
-                value={formData.thoughtText}
+                name="whisprText"
+                placeholder="Here's a new whispr..."
+                value={formData.whisprText}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
             </div>
             <div className="col-12 col-lg-3">
-              <label htmlFor="thoughtType">Select Thought Type:</label>
+              <label htmlFor="whisprType">Select Whispr Type:</label>
               <select
-                id="thoughtType"
-                name="thoughtType"
-                value={formData.thoughtType}
+                id="whisprType"
+                name="whisprType"
+                value={formData.whisprType}
                 className="form-select"
                 onChange={handleChange}
               >
-                {thoughtTypes.map((type) => (
+                {whisprTypes.map((type) => (
                   <option key={type} value={type}>
                     {type}
                   </option>
