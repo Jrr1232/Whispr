@@ -56,3 +56,31 @@ export const ADD_COMMENT = gql`
     }
   }
 `;
+
+export const REMOVE_COMMENT = gql`
+mutation removeComment($whisprId: ID!, $commentId: ID!) {
+  removeComment(whisprId: $whisprId, commentId: $commentId){
+      _id
+      whisprText
+      whisprAuthor
+      createdAt
+        comments {
+        _id
+        commentText
+        createdAt
+  }
+}
+}
+`;
+
+export const REMOVE_WHISPR = gql`
+mutation removeWhispr($whisprId: ID!) {
+  removeWhispr(whisprId: $whisprId){
+      _id
+      whisprText
+      whisprAuthor
+      createdAt
+
+  }
+  
+}`;

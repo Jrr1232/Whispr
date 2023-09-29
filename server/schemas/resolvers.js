@@ -54,17 +54,17 @@ const resolvers = {
           whisprType, // Add whisprType here
           whisprAuthor: context.user.username,
         });
-    
+
         await User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { whisprs: whispr._id } }
         );
-    
+
         return whispr;
       }
       throw AuthenticationError;
     },
-    
+
     addComment: async (parent, { whisprId, commentText }, context) => {
       if (context.user) {
         return Whispr.findOneAndUpdate(
@@ -89,12 +89,13 @@ const resolvers = {
           whisprAuthor: context.user.username,
         });
 
-        await User.findOneAndUpdate(
+        const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { whisprs: whispr._id } }
+          { $pull: { whisprs: whisprId } },
+          { new: true }
         );
 
-        return whispr;
+        return updatedUser;
       }
       throw AuthenticationError;
     },
