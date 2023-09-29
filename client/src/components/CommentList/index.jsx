@@ -1,4 +1,28 @@
-const CommentList = ({ comments = [] }) => {
+import React from 'react';
+import { useMutation } from '@apollo/client';
+import { REMOVE_COMMENT } from '../../utils/mutations';
+
+
+const CommentList = ({ comments = [], whisprId}) => {
+  const [removeComment] = useMutation(REMOVE_COMMENT);
+  
+  const handleDeleteComment = async (commentId) => {
+    console.log(commentId)
+    console.log(whisprId)
+  try {
+      await removeComment({
+        variables: {
+          whisprId,
+          commentId
+        },
+      });
+
+
+    } catch (error) {
+      console.error(error);
+    }
+
+  }; 
   if (!comments.length) {
     return <h3>No Comments Yet</h3>;
   }
@@ -23,6 +47,12 @@ const CommentList = ({ comments = [] }) => {
                   </span>
                 </h5>
                 <p className="card-body">{comment.commentText}</p>
+                <button
+                className="delete-button"
+                onClick={() => handleDeleteComment(comment._id)}
+              >
+                Delete
+              </button>
               </div>
             </div>
           ))}

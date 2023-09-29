@@ -1,4 +1,9 @@
 import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { REMOVE_WHISPR } from '../../utils/mutations';
+import Auth from '../../utils/auth';
+
 
 const WhisprList = ({
   whisprs,
@@ -6,6 +11,35 @@ const WhisprList = ({
   showTitle = true,
   showUsername = true,
 }) => {
+  let loggedInUser; 
+
+  if (Auth.loggedIn()) {
+    loggedInUser = Auth.getProfile().authenticatedPerson.username; 
+    if (loggedInUser) {
+    } else {
+      console.log("no user loggedIn");
+    }
+  }
+
+  const [removeWhispr] = useMutation(REMOVE_WHISPR);
+
+  const handleDeleteWhispr = async (whisprId) => {
+    try {
+      console.log(whisprId);
+      const { data } = await removeWhispr({
+        variables: {
+          whisprId,
+        },
+      });
+      window.location.reload()
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+
   if (!whisprs.length) {
     return <h3>no whisprs yet</h3>;
   }
@@ -61,6 +95,14 @@ const WhisprList = ({
             <div className="card-body bg-light p-2">
               <p>{whispr.whisprText}</p>
             </div>
+            {loggedInUser === whispr.whisprAuthor && (
+              <button
+                className="delete-button"
+                onClick={() => handleDeleteWhispr(whispr._id)}
+              >
+                Delete
+              </button>
+            )}
             <Link
               className="btn btn-primary btn-block btn-squared"
               to={`/whisprs/${whispr._id}`}
