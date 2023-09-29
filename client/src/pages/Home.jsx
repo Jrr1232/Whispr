@@ -4,6 +4,7 @@ import ThoughtList from '../components/ThoughtList';
 import ThoughtForm from '../components/ThoughtForm';
 
 import { QUERY_THOUGHTS } from '../utils/queries';
+import "../styles/home.css";
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_THOUGHTS);

@@ -1,0 +1,72 @@
+/* Add this CSS to your component or import it from a separate CSS file */
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mb-3 {
+    margin-bottom: 1rem;
+  }
+  
+  /* Style the profile header */
+  .bg-dark {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .text-light {
+    color: #fff;
+  }
+  
+  .p-3 {
+    padding: 1rem;
+  }
+  
+  /* Style the profile content */
+  .col-12 {
+    width: 100%;
+  }
+  
+  .col-md-10 {
+    max-width: 80%;
+  }
+  
+  /* Style the thoughts list */
+  .mb-5 {
+    margin-bottom: 3rem;
+  }
+  
+  /* Style the thought form container */
+  .mb-3 {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px dotted #1a1a1a;
+  }
+  
+  /* Style the loading message */
+  .loading-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  /* Style the message for users not logged in */
+  .not-logged-in-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  /* Style the user's username in the title */
+  .user-username {
+    font-weight: bold;
+  }
+  
+  /* Style the "your" text */
+  .your-text {
+    font-style: italic;
+  }
+  

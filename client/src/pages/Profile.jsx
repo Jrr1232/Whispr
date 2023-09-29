@@ -7,6 +7,7 @@ import ThoughtList from '../components/ThoughtList';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
+import "../styles/profile.css";
 
 const Profile = () => {
   const { username: userParam } = useParams();

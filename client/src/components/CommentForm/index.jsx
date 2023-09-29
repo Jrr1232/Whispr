@@ -5,6 +5,8 @@ import { useMutation } from '@apollo/client';
 import { ADD_COMMENT } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
+import "../../styles/commentform.css";
+
 
 const CommentForm = ({ thoughtId }) => {
   const [commentText, setCommentText] = useState('');

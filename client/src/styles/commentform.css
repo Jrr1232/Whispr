@@ -1,0 +1,61 @@
+/* CommentForm.css */
+.comment-form-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .comment-form-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .post-type-select {
+    margin-bottom: 15px;
+  }
+  
+  .post-type-select label {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .post-type-select select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .character-count {
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+  
+  .textarea-input {
+    width: 100%;
+    min-height: 100px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  .add-comment-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .add-comment-button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,0 +1,29 @@
+/* Add this CSS to your component or import it from a separate CSS file */
+
+#error-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f8f8; /* Background color for the error page */
+  }
+  
+  #error-page h1 {
+    font-size: 2rem;
+    color: #ff0000; /* Red color for the error title */
+    margin-bottom: 16px;
+  }
+  
+  #error-page p {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #333; /* Text color for the error messages */
+    margin: 8px 0;
+  }
+  
+  #error-page i {
+    font-style: italic;
+    color: #ff0000; /* Red color for the error message in italics */
+  }
+  

@@ -1,0 +1,57 @@
+/* Import this CSS file in your component or application */
+
+/* Styles for the main content */
+.my-3 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Styles for the thought header */
+  .card-header.bg-dark.text-light.p-2 {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    margin: 0;
+  }
+  
+  /* Styles for the thought author and date */
+  .card-header.bg-dark.text-light.p-2 h3 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+  
+  .card-header.bg-dark.text-light.p-2 span {
+    font-size: 1rem;
+    color: #888;
+  }
+  
+  /* Styles for the thought content container */
+  .bg-light.py-4 {
+    background-color: #f7f7f7;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  /* Styles for the thought content (blockquote) */
+  blockquote.p-4 {
+    font-size: 1.5rem;
+    font-style: italic;
+    border: 2px dotted #1a1a1a;
+    padding: 1rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  /* Styles for the comments container */
+  .my-5 {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  /* Styles for the comment form container */
+  .m-3.p-4 {
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px dotted #1a1a1a;
+  }
+  

@@ -6,6 +6,7 @@ import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
 
 import { QUERY_SINGLE_THOUGHT } from '../utils/queries';
+import "../styles/singlethought.css";
 
 const SingleThought = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`

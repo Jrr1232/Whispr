@@ -1,0 +1,57 @@
+/* Footer styles */
+footer {
+    background-color: #2e3b4e; /* Footer background color (dark blue) */
+    color: #ffc107; /* Text color (yellow) */
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Box shadow for footer */
+    font-family: 'Arial', sans-serif; /* Font family for the entire footer */
+  }
+  
+  /* Footer container styles */
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px; /* Maximum width for the footer content */
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Go Back button styles */
+  .btn {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Verdana', sans-serif; /* Font family for buttons */
+    font-size: 1rem;
+  }
+  
+  /* Go Back button background color styles */
+  .btn-dark {
+    background-color: #343a40; /* Dark gray background for the button */
+    color: #fff; /* Text color for the button (white) */
+  }
+  
+  /* Go Back button hover effect */
+  .btn:hover {
+    opacity: 0.8; /* Slightly reduced opacity on hover */
+  }
+  
+  /* Heart emoji styles */
+  .emoji {
+    font-size: 1.5rem;
+    margin-right: 0.2rem;
+    vertical-align: middle;
+  }
+  
+  /* Footer message styles */
+  h4 {
+    margin: 0;
+    font-size: 1rem;
+    margin-top: 1rem;
+    font-family: 'Roboto', sans-serif; /* Font family for the footer message */
+  }
+  

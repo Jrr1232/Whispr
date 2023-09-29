@@ -1,0 +1,60 @@
+/* Import this CSS file in your component or application */
+
+/* Styles for the main content */
+main {
+    background-color: #f7f7f7; /* Background color for the main content */
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  /* Styles for the thought form container */
+  .col-12.col-md-10.mb-3.p-3 {
+    border: 1px solid #1a1a1a; /* Border style for the thought form container */
+    background-color: #fff; /* Background color for the thought form container */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for the thought form container */
+    border-radius: 5px; /* Rounded corners for the thought form container */
+  }
+  
+  /* Styles for the loading message */
+  .loading-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333; /* Text color for the loading message */
+    margin-top: 20px; /* Margin from the top */
+  }
+  
+  /* Styles for the thought list container */
+  .col-12.col-md-8.mb-3 {
+    background-color: #fff; /* Background color for the thought list container */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for the thought list container */
+    border-radius: 5px; /* Rounded corners for the thought list container */
+  }
+  
+  /* Styles for the thought list title */
+  .thought-list-title {
+    background-color: #333; /* Background color for the thought list title */
+    color: #fff; /* Text color for the thought list title */
+    padding: 10px; /* Padding for the thought list title */
+    font-size: 1.2rem;
+    border-top-left-radius: 5px; /* Rounded corners for the top-left corner */
+    border-top-right-radius: 5px; /* Rounded corners for the top-right corner */
+  }
+  
+  /* Styles for individual thoughts in the list */
+  .thought {
+    border-bottom: 1px solid #ccc; /* Border between thoughts */
+    padding: 10px; /* Padding for each thought */
+  }
+  
+  /* Styles for the thought content */
+  .thought-content {
+    font-size: 1.1rem;
+    color: #333; /* Text color for the thought content */
+  }
+  
+  /* Styles for the date/time of each thought */
+  .thought-date {
+    font-size: 0.9rem;
+    color: #888; /* Text color for the thought date/time */
+  }
+  

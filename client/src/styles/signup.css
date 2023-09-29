@@ -1,0 +1,55 @@
+/* Import this CSS file in your component or application */
+
+/* Styles for the main content */
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f7f7f7; /* Background color for the main content */
+  }
+  
+  /* Styles for the card container */
+  .card {
+    max-width: 400px;
+    width: 100%;
+    border: 1px solid #ccc; /* Border for the card container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for the card container */
+    background-color: #fff; /* Background color for the card container */
+  }
+  
+  /* Styles for the card header */
+  .card-header.bg-dark.text-light.p-2 {
+    background-color: #333; /* Background color for the card header */
+    color: #fff; /* Text color for the card header */
+    padding: 0.5rem 1rem;
+  }
+  
+  /* Styles for the form inputs */
+  .form-input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc; /* Border for the form inputs */
+    border-radius: 5px; /* Rounded corners for the form inputs */
+  }
+  
+  /* Styles for the submit button */
+  .btn.btn-block.btn-primary {
+    background-color: #007bff; /* Background color for the submit button */
+    color: #fff; /* Text color for the submit button */
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px; /* Rounded corners for the submit button */
+    cursor: pointer;
+  }
+  
+  /* Styles for error messages */
+  .my-3.p-3.bg-danger.text-white {
+    background-color: #dc3545; /* Background color for error messages */
+    color: #fff; /* Text color for error messages */
+    padding: 1rem;
+    border-radius: 5px; /* Rounded corners for error messages */
+  }
+  
