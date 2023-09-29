@@ -29,9 +29,9 @@ const WhisprList = ({
                     </span>
                   </Link>
                   <span style={{float: 'right'}}>
-                    <Link to={whispr.category}>
+                    <Link to={whispr.whisprType}>
                       <button className='btn btn-link'>
-                        {whispr.category ? whispr.category : '-'}
+                        {whispr.whisprType}
                       </button>
                     </Link>
                   </span>
@@ -44,7 +44,7 @@ const WhisprList = ({
                   <span className='ml-1'>
                     <Link>
                       <button className='btn btn-link'>
-                        {whispr.category ? whispr.category : '-'}
+                        {whispr.whisprType}
                       </button>
                     </Link>
                   </span>
