@@ -11,11 +11,11 @@ const Footer = () => {
             className="btn btn-dark mb-3"
             onClick={() => navigate(-1)}
           >
-            &larr; Go Back
+            &larr; go Back
           </button>
         )}
         <h4>
-          Made with{' '}
+          made with{' '}
           <span
             className="emoji"
             role="img"

@@ -26,7 +26,7 @@ const SingleWhispr = () => {
       <h3 className="card-header bg-dark text-light p-2 m-0">
         {whispr.whisprAuthor} <br />
         <span style={{ fontSize: '1rem' }}>
-          whispred on {whispr.createdAt}
+          whispred on {whispr.createdAt.toLowerCase()}
         </span>
       </h3>
       <div className="bg-light py-4">
@@ -39,7 +39,7 @@ const SingleWhispr = () => {
             lineHeight: '1.5',
           }}
         >
-          {whispr.whisprText}
+          {whispr.whisprText.toLowerCase()}
         </blockquote>
       </div>
 

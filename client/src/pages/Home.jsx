@@ -24,7 +24,7 @@ const Home = () => {
           ) : (
             <WhisprList
               whisprs={whisprs}
-              title="Some Feed for Whispr(s)..."
+              title="some feed for whispr(s)..."
             />
           )}
         </div>

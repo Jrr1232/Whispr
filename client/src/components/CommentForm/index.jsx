@@ -44,7 +44,7 @@ const CommentForm = ({ whisprId }) => {
 
   return (
     <div>
-      <h4>What are your comments on this whispr?</h4>
+      <h4>what are your comments on this whispr?</h4>
 
       {Auth.loggedIn() ? (
         <>
@@ -53,7 +53,7 @@ const CommentForm = ({ whisprId }) => {
               characterCount === 280 || error ? 'text-danger' : ''
             }`}
           >
-            Character Count: {characterCount}/280
+            character count: {characterCount}/280
             {error && <span className="ml-2">{error.message}</span>}
           </p>
           <form

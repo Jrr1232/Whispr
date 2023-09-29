@@ -19,7 +19,7 @@ const WhisprForm = () => {
     ],
   });
 
-  const whisprTypes = ['Uncategorized', 'First World Problems 👽', 'Tea ☕️', 'Gamers 👾', 'Fur Friends 😼']; // type of whisprs
+  const whisprTypes = ['uncategorized', 'first world problems 👽', 'tea ☕️', 'gamers 👾', 'fur Friends 😼']; // type of whisprs
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -56,14 +56,14 @@ const WhisprForm = () => {
 
   return (
     <div>
-      <h3>Can't say it out loud? Go ahead and whispr</h3>
+      <h3>can't say it out loud? go ahead and whispr</h3>
 
       {Auth.loggedIn() ? (
         <>
           <p
             className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''}`}
           >
-            Character Count: {characterCount}/280
+            character count: {characterCount}/280
           </p>
           <form
             className="flex-row justify-center justify-space-between-md align-center"
@@ -80,11 +80,11 @@ const WhisprForm = () => {
               ></textarea>
             </div>
             <div className="col-12 col-lg-3">
-              <label htmlFor="whisprType">Select Whispr Type:</label>
+              <label htmlFor="whisprType">select whispr type:</label>
               <select
                 id="whisprType"
                 name="whisprType"
-                value={formData.whisprType}
+                value={formData.whisprType.toLowerCase()}
                 className="form-select"
                 onChange={handleChange}
               >
@@ -110,7 +110,7 @@ const WhisprForm = () => {
         </>
       ) : (
         <p>
-          You need to be logged in to whispr. Please{' '}
+          you need to be logged in to whispr. please{' '}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}

@@ -23,15 +23,15 @@ const WhisprList = ({
                     className="text-light"
                     to={`/profiles/${whispr.whisprAuthor}`}
                   >
-                    {whispr.whisprAuthor} <br />
+                    {whispr.whisprAuthor.toLowerCase()} <br />
                     <span style={{ fontSize: '1rem' }}>
-                      whispred on {whispr.createdAt}
+                      whispred on {whispr.createdAt.toLowerCase()}
                     </span>
                   </Link>
                   <span style={{float: 'right'}}>
                     <Link to={whispr.category}>
                       <button className='btn btn-link'>
-                        {whispr.category ? whispr.category : '-'}
+                        {whispr.whisprType.toLowerCase()}
                       </button>
                     </Link>
                   </span>
@@ -39,7 +39,7 @@ const WhisprList = ({
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    You whispred on {whispr.createdAt}
+                    you whispred on {whispr.createdAt.toLowerCase()}
                   </span>
                   <span className='ml-1'>
                     <Link>
@@ -59,13 +59,13 @@ const WhisprList = ({
               )}
             </h4>
             <div className="card-body bg-light p-2">
-              <p>{whispr.whisprText}</p>
+              <p>{whispr.whisprText.toLowerCase()}</p>
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"
               to={`/whisprs/${whispr._id}`}
             >
-              Join the conversation on this whispr.
+              join the conversation on this whispr.
             </Link>
           </div>
         ))}

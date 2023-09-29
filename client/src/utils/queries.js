@@ -20,6 +20,7 @@ export const QUERY_WHISPRS = gql`
     whisprs {
       _id
       whisprText
+      whisprType
       whisprAuthor
       createdAt
     }

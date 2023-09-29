@@ -1,42 +1,52 @@
 [
   {
-    "whisprText": "Everyone knows that debugging is twice as hard as writing a program in the first place. So if you're as clever as you can be when you write it, how will you ever debug it?",
-    "whisprAuthor": "Brian Kernighan"
+    "whisprText": "i always cook with wine. sometimes i even add it to the food.",
+    "whisprAuthor": "w.c. fields",
+    "whisprType": "uncategorized"
   },
   {
-    "whisprText": "Some of the best programming is done on paper, really. Putting it into the computer is just a minor detail.",
-    "whisprAuthor": "Max Kanat-Alexander"
+    "whisprText": "my cookie is too big to fit into the glass of milk.",
+    "whisprAuthor": "java monster",
+    "whisprType": "first world problems 👽"
   },
   {
-    "whisprText": "When you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. So create.",
-    "whisprAuthor": "Why The Lucky Stiff"
+    "whisprText": "i only work here for the coffee, donuts, and hot office gossip.",
+    "whisprAuthor": "karen from finance",
+    "whisprType": "tea ☕️"
   },
   {
-    "whisprText": "I'm not a great programmer; I'm just a good programmer with great habits.",
-    "whisprAuthor": "Kent Beck"
+    "whisprText": "you like krabby patties, don't you?",
+    "whisprAuthor": "im rdy",
+    "whisprType": "uncategorized"
   },
   {
-    "whisprText": "Walking on water and developing software from a specification are easy if both are frozen.",
-    "whisprAuthor": "Edward V. Berard"
+    "whisprText": "i paused my game to be here",
+    "whisprAuthor": "faceless dev",
+    "whisprType": "gamers 👾"
   },
   {
-    "whisprText": "The most disastrous thing that you can ever learn is your first programming language.",
-    "whisprAuthor": "Alan Kay"
+    "whisprText": "there’s not enough dressing on my salad. now my salad tastes like salad.",
+    "whisprAuthor": "cute programmer",
+    "whisprType": "first world problems 👽"
   },
   {
-    "whisprText": "The most important property of a program is whether it accomplishes the intention of its user.",
-    "whisprAuthor": "C.A.R. Hoare"
+    "whisprText": "i have 3 cats and 2 dogs, but my rabbit is my favorite.",
+    "whisprAuthor": "scraper nerd",
+    "whisprType": "fur friends 😼"
   },
   {
-    "whisprText": "Delivering good software today is often better than perfect software tomorrow, so finish things and ship.",
-    "whisprAuthor": "David Thomas"
+    "whisprText": "cop gave me a ticket and he's like, \"do you know about this law?\" i didn't so i said \"no\" because i didn't and it's so much money and i only have $37 and i'm not even supposed to go under 50 and i'm going to get fined by my bank",
+    "whisprAuthor": "girl math",
+    "whisprType": "first world problems 👽"
   },
   {
-    "whisprText": "If you optimize everything, you will always be unhappy.",
-    "whisprAuthor": "Donald Knuth"
+    "whisprText": "i hear her hair is insured for $10,000.",
+    "whisprAuthor": "regina g. luver",
+    "whisprType": "tea ☕️"
   },
   {
-    "whisprText": "It's not a bug; it's an undocumented feature.",
-    "whisprAuthor": "Lernantino"
+    "whisprText": "when you get online, but the bois already have a full squad.",
+    "whisprAuthor": "code dreamer",
+    "whisprType": "gamers 👾"
   }
 ]
