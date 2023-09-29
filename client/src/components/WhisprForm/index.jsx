@@ -28,12 +28,12 @@ const WhisprForm = () => {
       const { data } = await addWhispr({
         variables: {
           whisprText: formData.whisprText,
-          whisprType: formData.whisprType, // Use selectedWhisprType here
-          // whisprAuthor: Auth.getProfile().authenticatedPerson.username,
+          whisprType: formData.whisprType, 
         },
       });
 
       setFormData({ whisprText: '', whisprType: 'Uncategorized' });
+      setCharacterCount(0);
     } catch (err) {
       console.error(err);
     }
@@ -43,10 +43,15 @@ const WhisprForm = () => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
     console.log(formData.whisprType);
-    // if (name === 'whisprText' && value.length <= 280) {
-    //   setWhisprText(value);
-    //   setCharacterCount(value.length);
-    // }
+
+    if (name === 'whisprText' && value.length <= 280) {
+      setFormData({ ...formData, [name]: value });
+      setCharacterCount(value.length);
+    } else if (name === 'whisprText' && value.length > 280) {
+      const truncatedValue = value.slice(0, 280);
+      setFormData({ ...formData, [name]: truncatedValue });
+      setCharacterCount(280); 
+    }
   };
 
   return (
@@ -56,8 +61,7 @@ const WhisprForm = () => {
       {Auth.loggedIn() ? (
         <>
           <p
-            className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
-              }`}
+            className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''}`}
           >
             Character Count: {characterCount}/280
           </p>

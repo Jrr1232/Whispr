@@ -27,6 +27,7 @@ const CommentForm = ({ whisprId }) => {
       });
 
       setCommentText('');
+      setCharacterCount(0);
     } catch (err) {
       console.error(err);
     }
