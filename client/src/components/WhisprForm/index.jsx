@@ -19,7 +19,7 @@ const WhisprForm = () => {
     ],
   });
 
-  const whisprTypes = ['uncategorized', 'first world problems 👽', 'tea ☕️', 'gamers 👾', 'fur Friends 😼']; // type of whisprs
+  const whisprTypes = ['uncategorized', 'first world problems 👽', 'tea ☕️', 'gamers 👾', 'fur friends 😼']; // type of whisprs
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -27,7 +27,7 @@ const WhisprForm = () => {
     try {
       const { data } = await addWhispr({
         variables: {
-          whisprText: formData.whisprText,
+          whisprText: formData.whisprText.toLowerCase(),
           whisprType: formData.whisprType, 
         },
       });
@@ -73,7 +73,7 @@ const WhisprForm = () => {
               <textarea
                 name="whisprText"
                 placeholder="Here's a new whispr..."
-                value={formData.whisprText}
+                value={formData.whisprText.toLowerCase()}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
@@ -84,7 +84,7 @@ const WhisprForm = () => {
               <select
                 id="whisprType"
                 name="whisprType"
-                value={formData.whisprType.toLowerCase()}
+                value={formData.whisprType}
                 className="form-select"
                 onChange={handleChange}
               >

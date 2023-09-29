@@ -73,14 +73,14 @@ const CommentForm = ({ whisprId }) => {
 
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Comment
+                add comment
               </button>
             </div>
           </form>
         </>
       ) : (
         <p>
-          You need to be logged in to share your whisprs. Please{' '}
+          you need to be logged in to share your whisprs. please{' '}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}

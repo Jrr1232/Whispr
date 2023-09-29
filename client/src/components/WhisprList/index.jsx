@@ -55,7 +55,7 @@ const WhisprList = ({
                 <>
                   <Link
                     className="text-light"
-                    to={`/profiles/${whispr.whisprAuthor}`}
+                    to={`/profiles/${whispr.whisprAuthor.toLowerCase()}`}
                   >
                     {whispr.whisprAuthor.toLowerCase()} <br />
                     <span style={{ fontSize: '1rem' }}>
@@ -65,7 +65,7 @@ const WhisprList = ({
                   <span style={{float: 'right'}}>
                     <Link to={whispr.category}>
                       <button className='btn btn-link'>
-                        {whispr.whisprType.toLowerCase()}
+                        {whispr.whisprType}
                       </button>
                     </Link>
                   </span>
@@ -73,7 +73,7 @@ const WhisprList = ({
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    you whispred on {whispr.createdAt.toLowerCase()}
+                    You whispred on {whispr.createdAt.toLowerCase()}
                   </span>
                   <span className='ml-1'>
                     <Link>
@@ -100,7 +100,7 @@ const WhisprList = ({
                 className="delete-button"
                 onClick={() => handleDeleteWhispr(whispr._id)}
               >
-                Delete
+                delete
               </button>
             )}
             <Link

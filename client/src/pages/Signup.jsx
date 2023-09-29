@@ -46,7 +46,7 @@ const Signup = () => {
           <div className="card-body">
             {data ? (
               <p>
-                Success! You may now head{' '}
+                success! you may now head{' '}
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (

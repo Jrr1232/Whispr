@@ -46,17 +46,7 @@ const CommentList = ({ comments = [], whisprId}) => {
                     on {comment.createdAt.toLowerCase()}
                   </span>
                 </h5>
-<<<<<<< HEAD
                 <p className="card-body">{comment.commentText.toLowerCase()}</p>
-=======
-                <p className="card-body">{comment.commentText}</p>
-                <button
-                className="delete-button"
-                onClick={() => handleDeleteComment(comment._id)}
-              >
-                Delete
-              </button>
->>>>>>> origin/main
               </div>
             </div>
           ))}
