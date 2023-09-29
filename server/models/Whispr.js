@@ -8,12 +8,12 @@ const commentSchema = new Schema({
     type: mongoose.Types.ObjectId,
     default: new mongoose.Types.ObjectId(),
   },
-  commentBody: {
+  commentText: {
     type: String,
     required: true,
     maxLength: 280,
   },
-  username: {
+  commentAuthor: {
     type: String,
     required: true,
   },
