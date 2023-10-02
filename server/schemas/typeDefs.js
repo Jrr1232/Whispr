@@ -43,6 +43,8 @@ const typeDefs = `
     addComment(whisprId: ID!, commentText: String!): Whispr
     removeWhispr(whisprId: ID!): Whispr
     removeComment(whisprId: ID!, commentId: ID!): Whispr
+    updateWhispr(whisprId: ID!, whisprText: String!): Whispr
+
   }
 `;
 
