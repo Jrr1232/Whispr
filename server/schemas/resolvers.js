@@ -116,7 +116,29 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-  },
-};
+
+    updateWhispr: async (parent, { whisprId, whisprText }, context) => {
+      if (context.user) {
+
+        const whispr = await Whispr.findOneAndUpdate(
+          { _id: whisprId },
+          { whisprText: whisprText },
+          { new: true }
+        );
+
+
+        return whispr;
+      }
+      throw AuthenticationError
+
+    }
+  }
+
+}
+
+
+
+
+
 
 module.exports = resolvers;

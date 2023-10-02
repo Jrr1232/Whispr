@@ -83,4 +83,16 @@ mutation removeWhispr($whisprId: ID!) {
 
   }
   
-}`;
+}
+`
+export const UPDATE_WHISPR = gql`
+mutation UpdateWhispr($whisprId: ID!, $whisprText: String!) {
+  updateWhispr(whisprId: $whisprId, whisprText: $whisprText) {
+    _id
+    createdAt
+    whisprAuthor
+    whisprText
+    whisprType
+  }
+  }
+`;

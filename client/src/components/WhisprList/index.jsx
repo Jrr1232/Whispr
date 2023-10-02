@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react'; 
 import { useMutation } from '@apollo/client';
-import { REMOVE_WHISPR } from '../../utils/mutations';
+import { REMOVE_WHISPR, UPDATE_WHISPR } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-
 
 const WhisprList = ({
   whisprs,
@@ -11,10 +10,10 @@ const WhisprList = ({
   showTitle = true,
   showUsername = true,
 }) => {
-  let loggedInUser; 
+  let loggedInUser;
 
   if (Auth.loggedIn()) {
-    loggedInUser = Auth.getProfile().authenticatedPerson.username; 
+    loggedInUser = Auth.getProfile().authenticatedPerson.username;
     if (loggedInUser) {
     } else {
       console.log("no user loggedIn");
@@ -31,14 +30,40 @@ const WhisprList = ({
           whisprId,
         },
       });
-      window.location.reload()
-
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }
   };
 
+  const showEditForm = async () => {
+    document.getElementById('edit-whisper-form').style.display = "block"
+  }
 
+  const [editedWhispr, setEditedWhispr] = useState(''); 
+  const [updateWhispr] = useMutation(UPDATE_WHISPR);
+
+  const handleUpdateWhispr = async (whisprId, editedWhispr) => {
+    try {
+    if (!editedWhispr.trim()) {
+      alert("Whispr cannot be empty.");
+      return; 
+    }
+      const whisprText = editedWhispr.toLowerCase()
+      console.log(whisprId);
+      console.log(editedWhispr);
+
+      const { data } = await updateWhispr({
+        variables: {
+          whisprId,
+          whisprText: editedWhispr.toLowerCase(),
+        },
+      });
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   if (!whisprs.length) {
     return <h3>no whisprs yet</h3>;
@@ -47,6 +72,16 @@ const WhisprList = ({
   return (
     <div>
       {showTitle && <h3>{title}</h3>}
+      <div id="edit-whisper-form">
+        <h4>Edit Whispr</h4>
+      <textarea
+                  id="edited-whispr"
+                  value={editedWhispr}
+                  placeholder='New Whispr'
+                  onChange={(e) => setEditedWhispr(e.target.value)}
+                ></textarea>
+                
+                </div>
       {whisprs &&
         whisprs.map((whispr) => (
           <div key={whispr._id} className="card mb-3">
@@ -55,14 +90,14 @@ const WhisprList = ({
                 <>
                   <Link
                     className="text-light"
-                    to={`/profiles/${whispr.whisprAuthor.toLowerCase()}`}
+                    to={`/profiles/${whispr.whisprAuthor}`}
                   >
-                    {whispr.whisprAuthor.toLowerCase()} <br />
+                    {whispr.whisprAuthor} <br />
                     <span style={{ fontSize: '1rem' }}>
-                      whispred on {whispr.createdAt.toLowerCase()}
+                      whispred on {whispr.createdAt}
                     </span>
                   </Link>
-                  <span style={{float: 'right'}}>
+                  <span style={{ float: 'right' }}>
                     <Link to={whispr.category}>
                       <button className='btn btn-link'>
                         {whispr.whisprType}
@@ -73,7 +108,7 @@ const WhisprList = ({
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    You whispred on {whispr.createdAt.toLowerCase()}
+                    You whispred on {whispr.createdAt}
                   </span>
                   <span className='ml-1'>
                     <Link>
@@ -82,7 +117,7 @@ const WhisprList = ({
                       </button>
                     </Link>
                   </span>
-                  <span style={{float: 'right'}}>
+                  <span style={{ float: 'right' }}>
                     <Link>
                       <button className='btn btn-info'>
                         Edit
@@ -93,21 +128,30 @@ const WhisprList = ({
               )}
             </h4>
             <div className="card-body bg-light p-2">
-              <p>{whispr.whisprText.toLowerCase()}</p>
+              <p>{whispr.whisprText}</p>
             </div>
             {loggedInUser === whispr.whisprAuthor && (
-              <button
-                className="delete-button"
-                onClick={() => handleDeleteWhispr(whispr._id)}
-              >
-                delete
-              </button>
+              <>
+                <button
+                  className="delete-button"
+                  onClick={() => handleDeleteWhispr(whispr._id,)}
+                >
+                  Delete
+                </button>
+                <button className="edit-button" onClick={showEditForm}>Edit</button>
+                <button
+                  className="save-button"
+                  onClick={() => handleUpdateWhispr(whispr._id, editedWhispr)}
+                >
+                  Save
+                </button>
+              </>
             )}
             <Link
               className="btn btn-primary btn-block btn-squared"
               to={`/whisprs/${whispr._id}`}
             >
-              join the conversation on this whispr.
+              Join the conversation on this whispr.
             </Link>
           </div>
         ))}
