@@ -73,7 +73,7 @@ const WhisprList = ({
     <div>
       {showTitle && <h3>{title}</h3>}
       <div id="edit-whisper-form">
-        <h4>Edit Whispr</h4>
+        <h4>edit Whispr</h4>
       <textarea
                   id="edited-whispr"
                   value={editedWhispr}
@@ -109,19 +109,19 @@ const WhisprList = ({
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    You whispred on {whispr.createdAt}
+                    you whispred on {whispr.createdAt}
                   </span>
                   <span className='ml-1'>
-                    <Link>
+                    {/* <Link>
                       <button className='btn btn-link'>
                         {whispr.category ? whispr.category : '-'}
                       </button>
-                    </Link>
+                    </Link> */}
                   </span>
                   <span style={{ float: 'right' }}>
                     <Link>
                       <button className='btn btn-info'>
-                        Edit
+                        edit
                       </button>
                     </Link>
                   </span>
@@ -137,14 +137,14 @@ const WhisprList = ({
                   className="delete-button"
                   onClick={() => handleDeleteWhispr(whispr._id,)}
                 >
-                  Delete
+                  delete
                 </button>
-                <button className="edit-button" onClick={showEditForm}>Edit</button>
+                <button className="edit-button" onClick={showEditForm}>edit</button>
                 <button
                   className="save-button"
                   onClick={() => handleUpdateWhispr(whispr._id, editedWhispr)}
                 >
-                  Save
+                  save
                 </button>
               </>
             )}
@@ -152,7 +152,7 @@ const WhisprList = ({
               className="btn btn-primary btn-block btn-squared"
               to={`/whisprs/${whispr._id}`}
             >
-              Join the conversation on this whispr.
+              join the conversation on this whispr.
             </Link>
           </div>
         ))}
