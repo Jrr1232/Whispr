@@ -96,6 +96,7 @@ const WhisprList = ({
                     <span style={{ fontSize: '1rem' }}>
                       whispred on {whispr.createdAt}
                     </span>
+                    
                   </Link>
                   <span style={{ float: 'right' }}>
                     <Link to={whispr.category}>
