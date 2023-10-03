@@ -1,3 +1,7 @@
+#home-img {
+  width: 500px;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -423,7 +427,7 @@ button {
 }
 
 a {
-  color: #1b89bc;
+  color: #B9ECFF ;
   text-decoration: none;
 }
 
@@ -883,11 +887,11 @@ a:hover {
 }
 
 .text-primary {
-  color: #2d3e50 !important;
+  color: #97B6EB  !important;
 }
 
 .text-info {
-  color: #1bbc9b !important;
+  color: #B9ECFF   !important;
 }
 
 .text-danger {
@@ -899,7 +903,7 @@ a:hover {
 }
 
 .text-light {
-  color: #d9e9e8 !important;
+  color: #3b475c !important;
 }
 
 .text-dark {
@@ -915,16 +919,16 @@ a:hover {
 }
 
 .text-link {
-  color: #1b89bc !important;
+  color: #B9ECFF   !important;
 }
 
 /* BACKGROUND UTILS */
 .bg-primary {
-  background-color: #2d3e50 !important;
+  background-color: #97B6EB  !important;
 }
 
 .bg-info {
-  background-color: #1bbc9b !important;
+  background-color: #B9ECFF   !important;
 }
 
 .bg-danger {
@@ -932,11 +936,15 @@ a:hover {
 }
 
 .bg-light {
-  background-color: #d9e9e8 !important;
+  background-color: #fff !important;
 }
 
+/* .card {
+  background-color: #fff;
+} */
+
 .bg-dark {
-  background-color: #1a1a1a !important;
+  background-color: #97B6EB !important;
 }
 
 .bg-white {
@@ -948,7 +956,7 @@ a:hover {
 }
 
 .bg-link {
-  background-color: #1b89bc !important;
+  background-color: #B9ECFF   !important;
 }
 
 /* DISPLAY */
@@ -983,12 +991,12 @@ a:hover {
   border: 1px solid transparent;
   outline: none;
   color: #1a1a1a;
-  background-color: #aeaeae;
+  background-color: #000;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
 .btn:hover {
-  background-color: #cecece;
+  background-color: #000;
 }
 
 .btn.btn-squared {
@@ -1012,8 +1020,8 @@ a:hover {
 }
 
 .btn.btn-primary {
-  background-color: #2d3e50;
-  color: #d9e9e8;
+  background-color: #97B6EB;
+  color: #000;
 }
 
 .btn.btn-primary:hover {
@@ -1022,7 +1030,7 @@ a:hover {
 
 .btn.btn-danger {
   background-color: #e64c66;
-  color: #ffffff;
+  color: #000;
 }
 
 .btn.btn-danger:hover {
@@ -1030,26 +1038,26 @@ a:hover {
 }
 
 .btn.btn-info {
-  background-color: #1bbc9b;
-  color: #ffffff;
+  background-color: #B9ECFF ;
+  color: #000;
 }
 
 .btn.btn-info:hover {
-  background-color: #31e1bd;
+  background-color: #3B475C;
 }
 
 .btn.btn-light {
-  background-color: #d9e9e8;
+  background-color: #B9ECFF;
   color: #1a1a1a;
 }
 
 .btn.btn-light:hover {
-  background-color: #84b8b4;
+  background-color: #3B475C;
 }
 
 .btn.btn-dark {
-  background-color: #1a1a1a;
-  color: #d9e9e8;
+  background-color: #97B6EB;
+  color: #000;
 }
 
 .btn.btn-dark:hover {
@@ -1067,7 +1075,7 @@ a:hover {
 
 .btn.btn-black {
   background-color: #000000;
-  color: #ffffff;
+  color: #000;
 }
 
 .btn.btn-black:hover {
@@ -1075,12 +1083,12 @@ a:hover {
 }
 
 .btn.btn-link {
-  background-color: #1b89bc;
-  color: #ffffff;
+  background-color: #B9ECFF ;
+  color: #000;
 }
 
 .btn.btn-link:hover {
-  background-color: #31a9e1;
+  background-color: #DFEAFF;
 }
 
 .card {
@@ -1090,7 +1098,7 @@ a:hover {
 
 .card .card-header {
   padding: 0.375rem;
-  background-color: #2d3e50;
+  background-color: #97B6EB ;
   color: #d9e9e8;
 }
 
@@ -1185,10 +1193,15 @@ label form [type='radio'] {
   flex-wrap: wrap;
 }
 
+.flex-row .p-3 {
+  background-color: #fff;
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  background-color: #DFEAFF;
 }
 
 .flex-wrap {

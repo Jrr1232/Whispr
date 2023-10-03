@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { REMOVE_WHISPR, UPDATE_WHISPR } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-
 const WhisprList = ({
   whisprs,
   title,
@@ -73,14 +72,16 @@ const WhisprList = ({
     <div>
       {showTitle && <h3>{title}</h3>}
       <div id="edit-whisper-form">
+
         <h4>edit whispr</h4>
+
       <textarea
                   id="edited-whispr"
                   value={editedWhispr}
                   placeholder='New Whispr'
                   onChange={(e) => setEditedWhispr(e.target.value)}
                 ></textarea>
-                
+
                 </div>
       {whisprs &&
         whisprs.map((whispr) => (
@@ -96,7 +97,9 @@ const WhisprList = ({
                     <span style={{ fontSize: '1rem' }}>
                       whispred on {whispr.createdAt.toLowerCase()}
                     </span>
+                    
                   </Link>
+                 
                   <span style={{ float: 'right' }}>
                     <Link to={whispr.category}>
                       <button className='btn btn-link'>
@@ -108,14 +111,16 @@ const WhisprList = ({
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
+
                     you whispred on {whispr.createdAt.toLowerCase()}
+
                   </span>
                   <span className='ml-1'>
-                    <Link>
+                    {/* <Link>
                       <button className='btn btn-link'>
                         {whispr.category ? whispr.category : '-'}
                       </button>
-                    </Link>
+                    </Link> */}
                   </span>
                   <span style={{ float: 'right' }}>
                     <Link>
@@ -151,7 +156,9 @@ const WhisprList = ({
               className="btn btn-primary btn-block btn-squared"
               to={`/whisprs/${whispr._id}`}
             >
+
               whispr into the conversation.
+
             </Link>
           </div>
         ))}

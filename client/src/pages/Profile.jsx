@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import WhisprForm from '../components/WhisprForm';
 import WhisprList from '../components/WhisprList';
 
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_USER, QUERY_ME,  } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
@@ -16,6 +16,8 @@ const Profile = () => {
   });
 
   const user = data?.me || data?.user || {};
+  const whispr = data?.whisprs || [];
+
   if (
     Auth.loggedIn() && 
     /* Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's username, and compare it to the userParam variable */
