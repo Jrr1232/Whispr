@@ -64,7 +64,7 @@ const CommentForm = ({ whisprId }) => {
               <textarea
                 name="commentText"
                 placeholder="Add your comment..."
-                value={commentText}
+                value={commentText.toLowerCase()}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}

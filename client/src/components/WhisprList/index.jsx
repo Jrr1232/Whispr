@@ -91,9 +91,9 @@ const WhisprList = ({
                     className="text-light"
                     to={`/profiles/${whispr.whisprAuthor}`}
                   >
-                    {whispr.whisprAuthor} <br />
+                    {whispr.whisprAuthor.toLowerCase()} <br />
                     <span style={{ fontSize: '1rem' }}>
-                      whispred on {whispr.createdAt}
+                      whispred on {whispr.createdAt.toLowerCase()}
                     </span>
                     
                   </Link>
@@ -109,7 +109,7 @@ const WhisprList = ({
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    you whispred on {whispr.createdAt}
+                    you whispred on {whispr.createdAt.toLowerCase()}
                   </span>
                   <span className='ml-1'>
                     {/* <Link>
