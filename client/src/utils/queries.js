@@ -10,6 +10,7 @@ export const QUERY_USER = gql`
         _id
         whisprText
         createdAt
+        whisprType
       }
     }
   }
@@ -55,6 +56,7 @@ export const QUERY_ME = gql`
         whisprText
         whisprAuthor
         createdAt
+        whisprType
       }
     }
   }

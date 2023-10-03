@@ -73,7 +73,7 @@ const WhisprList = ({
     <div>
       {showTitle && <h3>{title}</h3>}
       <div id="edit-whisper-form">
-        <h4>Edit Whispr</h4>
+        <h4>edit whispr</h4>
       <textarea
                   id="edited-whispr"
                   value={editedWhispr}
@@ -90,17 +90,17 @@ const WhisprList = ({
                 <>
                   <Link
                     className="text-light"
-                    to={`/profiles/${whispr.whisprAuthor}`}
+                    to={`/profiles/${whispr.whisprAuthor.toLowerCase()}`}
                   >
-                    {whispr.whisprAuthor} <br />
+                    {whispr.whisprAuthor.toLowerCase()} <br />
                     <span style={{ fontSize: '1rem' }}>
-                      whispred on {whispr.createdAt}
+                      whispred on {whispr.createdAt.toLowerCase()}
                     </span>
                   </Link>
                   <span style={{ float: 'right' }}>
                     <Link to={whispr.category}>
                       <button className='btn btn-link'>
-                        {whispr.whisprType}
+                        {whispr.whisprType.toLowerCase()}
                       </button>
                     </Link>
                   </span>
@@ -108,7 +108,7 @@ const WhisprList = ({
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    You whispred on {whispr.createdAt}
+                    you whispred on {whispr.createdAt.toLowerCase()}
                   </span>
                   <span className='ml-1'>
                     <Link>
@@ -120,7 +120,7 @@ const WhisprList = ({
                   <span style={{ float: 'right' }}>
                     <Link>
                       <button className='btn btn-info'>
-                        Edit
+                        edit
                       </button>
                     </Link>
                   </span>
@@ -128,7 +128,7 @@ const WhisprList = ({
               )}
             </h4>
             <div className="card-body bg-light p-2">
-              <p>{whispr.whisprText}</p>
+              <p>{whispr.whisprText.toLowerCase()}</p>
             </div>
             {loggedInUser === whispr.whisprAuthor && (
               <>
@@ -136,14 +136,14 @@ const WhisprList = ({
                   className="delete-button"
                   onClick={() => handleDeleteWhispr(whispr._id,)}
                 >
-                  Delete
+                  delete
                 </button>
-                <button className="edit-button" onClick={showEditForm}>Edit</button>
+                <button className="edit-button" onClick={showEditForm}>edit</button>
                 <button
                   className="save-button"
                   onClick={() => handleUpdateWhispr(whispr._id, editedWhispr)}
                 >
-                  Save
+                  save
                 </button>
               </>
             )}
@@ -151,7 +151,7 @@ const WhisprList = ({
               className="btn btn-primary btn-block btn-squared"
               to={`/whisprs/${whispr._id}`}
             >
-              Join the conversation on this whispr.
+              whispr into the conversation.
             </Link>
           </div>
         ))}
