@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { REMOVE_WHISPR, UPDATE_WHISPR } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-
 const WhisprList = ({
   whisprs,
   title,
@@ -80,7 +79,7 @@ const WhisprList = ({
                   placeholder='New Whispr'
                   onChange={(e) => setEditedWhispr(e.target.value)}
                 ></textarea>
-                
+
                 </div>
       {whisprs &&
         whisprs.map((whispr) => (
@@ -98,6 +97,7 @@ const WhisprList = ({
                     </span>
                     
                   </Link>
+                 
                   <span style={{ float: 'right' }}>
                     <Link to={whispr.category}>
                       <button className='btn btn-link'>
