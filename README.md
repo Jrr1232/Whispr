@@ -15,12 +15,12 @@ Log out when you are done.
 
 ## Technologies Used
 
-Frontend: React
-Backend: Node.js, Express.js
-Database: MongoDB with Mongoose ODM
-Query Language: GraphQL
-Authentication: JWT (JSON Web Tokens)
-Deployment: Heroku
+- Frontend: React
+- Backend: Node.js, Express.js
+- Database: MongoDB with Mongoose ODM
+- Query Language: GraphQL
+- Authentication: JWT (JSON Web Tokens)
+- Deployment: Heroku
 
 ## Screenshot
 
