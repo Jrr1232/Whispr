@@ -24,6 +24,8 @@ Deployment: Heroku
 
 ## Screenshot
 
+![Whispr Demo](./client/public/whispr_demo.png)
+
 ## Conrtibutors
 
 Florencio, Joaquin - https://github.com/Jrr1232
